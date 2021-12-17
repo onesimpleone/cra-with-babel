@@ -106,6 +106,12 @@ function getClientEnvironment(publicUrl) {
     }, {}),
   };
 
+  // #### CUSTOMIZE - START ####
+  // Added compatibility with the "react-native-web" package.
+  // This doesn't break the guarantees that CRA provides.
+  stringified.__DEV__ = process.env.NODE_ENV !== 'production';
+  // #### CUSTOMIZE - END ####
+
   return { raw, stringified };
 }
 
