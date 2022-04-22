@@ -31,6 +31,12 @@ const publicUrlOrPath = getPublicUrlOrPath(
 
 const buildPath = process.env.BUILD_PATH || 'build';
 
+// #### CUSTOMIZE - START ####
+const indexJsPath = process.env.INDEX_JS_PATH || 'src/index';
+const publicPath = process.env.PUBLIC_PATH || 'public';
+const htmlPath = process.env.HTML_PATH || 'public/index.html';
+// #### CUSTOMIZE - END ####
+
 const moduleFileExtensions = [
   'web.mjs',
   'mjs',
@@ -63,9 +69,9 @@ module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp(buildPath),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appPublic: resolveApp(publicPath),
+  appHtml: resolveApp(htmlPath),
+  appIndexJs: resolveModule(resolveApp, indexJsPath),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
@@ -88,9 +94,9 @@ module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp(buildPath),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appPublic: resolveApp(publicPath),
+  appHtml: resolveApp(htmlPath),
+  appIndexJs: resolveModule(resolveApp, indexJsPath),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
@@ -126,9 +132,9 @@ if (
     dotenv: resolveOwn(`${templatePath}/.env`),
     appPath: resolveApp('.'),
     appBuild: resolveOwn(path.join('../..', buildPath)),
-    appPublic: resolveOwn(`${templatePath}/public`),
-    appHtml: resolveOwn(`${templatePath}/public/index.html`),
-    appIndexJs: resolveModule(resolveOwn, `${templatePath}/src/index`),
+    appPublic: resolveOwn(`${templatePath}/${publicPath}`),
+    appHtml: resolveOwn(`${templatePath}/${htmlPath}`),
+    appIndexJs: resolveModule(resolveOwn, `${templatePath}/${indexJsPath}`),
     appPackageJson: resolveOwn('package.json'),
     appSrc: resolveOwn(`${templatePath}/src`),
     appTsConfig: resolveOwn(`${templatePath}/tsconfig.json`),
